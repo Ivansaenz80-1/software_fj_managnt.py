@@ -1,37 +1,45 @@
 #Tarea4 Grupo308
 import logging
+import tkinter as tk
+from tkinter import scrolledtext, messagebox
 from abc import ABC, abstractmethod
 
-# Configuración del archivo de logs
+# Configuración del archivo logs
+# se registran todas las actividades y errores en 'software_fj.log'[3].
 logging.basicConfig(filename='system.log', level=logging.INFO, 
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 # EXCEPCIONES PERSONALIZADAS[4]
+# Heredan de la clase base Exception para representar errores lógicos [4].
 class SoftwareFJError(Exception):
     """Clase base para excepciones del sistema."""
     pass
 
 class InvalidDataError(SoftwareFJError):
-    """Se lanza cuando los datos de entrada son inválidos."""
+    """Se lanza cuando los datos de entrada no cumplen las validaciones[5]."""
     pass
 
 class ServiceUnavailableError(SoftwareFJError):
-    """Se lanza cuando un servicio no puede procesarse."""
+    """Se lanza cuando un servicio esta lleno o no disponible [5]."""
     pass
 # CLASES ASTRACTAS Y ENTIDADES[7]
 class EntidadBase(ABC):
+    """Clase abstracta para definir un contrato estructural [6]."""
     @abstractmethod
     def obtener_detalles(self):
         pass
+# CLASES CLIENTES
 class Cliente(EntidadBase):
+    """Clase cliente con encapsulación y validación estricta [7]."""
     def __init__(self, id_cliente, nombre, email):
-        #Encapsulacion con validaciones estrictas [7,8]   self.id = id_cliente = self.validar_id(id_cliente)
+        # Atributos protegidos con prefijo _ (Encapsulamiento)
+        self._id = self.validar_id(id_cliente)
         self.nombre = nombre
         self.email = email
 
     def validar_id(self, id_valor):
         if not str(id_valor).isdigit():
-            # Uso de excepciones personalizadas para validación [4, 6]
+            # Uso de excepciones personalizadas para validación [4,]
             raise InvalidDataError(f"ID inválido: {id_valor}. Must be numeric.")
         return id_valor
     def obtener_detalles(self):
