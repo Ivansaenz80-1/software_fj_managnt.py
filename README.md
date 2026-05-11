@@ -16,7 +16,7 @@ Este proyecto implementa un sistema de gestión de clientes y reservas para la e
 ## Cómo Ejecutar
 1. Clonar el repositorio: `git clone [https://github.com/grupo308/software_fj_managnt.py.git]`
 2. Ejecutar el archivo principal: `python software_fj_managnt.py`
-3. Se abrirá una ventana mostrando los resultados de las 10 operaciones simuladas.
+3. Mostrara los resultados de las 10 operaciones simuladas.
 
 ## Integrantes - Grupo 308
 Estudiante 1: Ivan Darío Saenz Lugo
