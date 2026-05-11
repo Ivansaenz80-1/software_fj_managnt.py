@@ -44,7 +44,7 @@ class Cliente(EntidadBase):
         return id_valor
     def obtener_detalles(self):
         return f"Cliente[ID: {self.validar_id}, Name: {self.nombre}, Email: {self.email}]"
-# JERARQUIA DE SERVICIOS (Herencia y Polimorfismo) [7, 9]
+# JERARQUIA DE SERVICIOS (Herencia y Polimorfismo) [7, 9]   
 class ServicioBase(ABC):
     def __init__(self, nombre, costo_base):
         self.nombre = nombre
